@@ -3,7 +3,7 @@ html, body {
 }
   
 canvas {
-  border: solid;
+  border: outset;
   border-width: 5px;
 }
 

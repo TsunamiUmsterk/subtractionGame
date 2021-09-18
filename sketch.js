@@ -20,7 +20,7 @@ function preload() {
 function setup() {
      createCanvas(displayWidth-10, displayHeight/3*2);
 
-     value1 = round(random(1, 12));
+     value1 = round(random(1, 18));
      value2 = round(random(1, value1));
      Ans = value1 - value2;
 
@@ -34,32 +34,32 @@ function setup() {
      gameState = 0;
 
      input = createButton(Ans);
-     input.size(displayWidth/3-2.5, displayHeight/12);
-     input.style("font-size: 30px; font-family: Marker Felt;");
+     input.size(displayWidth/4, displayHeight/12);
+     input.style("font-size: 30px; font-family: Marker Felt; border-radius: 40px;");
      input.mousePressed(wellAns);
 
      input1 = createButton(Ans+va);
-     input1.size(displayWidth/3-2.5, displayHeight/12);
-     input1.style("font-size: 30px; font-family: Marker Felt;");
+     input1.size(displayWidth/4, displayHeight/12);
+     input1.style("font-size: 30px; font-family: Marker Felt; border-radius: 40px;");
      input1.mousePressed(badAns);
 
      input2 = createButton(Ans+va1);
-     input2.size(displayWidth/3-2.5, displayHeight/12);
-     input2.style("font-size: 30px; font-family: Marker Felt;");
+     input2.size(displayWidth/4, displayHeight/12);
+     input2.style("font-size: 30px; font-family: Marker Felt; border-radius: 40px;");
      input2.mousePressed(badAns);
 
      if(va1 === 1) {
           input.position(5, displayHeight/5);
-          input1.position(displayWidth/3+2.5, displayHeight/5);
-          input2.position(displayWidth/3*2, displayHeight/5);
+          input1.position(displayWidth/2 - displayWidth/8, displayHeight/5);
+          input2.position(displayWidth - (displayWidth/4+5), displayHeight/5);
      } else if(va1 === 2) {
-          input.position(displayWidth/3+2.5, displayHeight/5);
-          input1.position(displayWidth/3*2, displayHeight/5);
+          input.position(displayWidth/2 - displayWidth/8, displayHeight/5);
+          input1.position(displayWidth - (displayWidth/4+5), displayHeight/5);
           input2.position(5, displayHeight/5);
      } else if(va1 === 3) {
-          input.position(displayWidth/3*2, displayHeight/5);
+          input.position(displayWidth - (displayWidth/4+5), displayHeight/5);
           input1.position(5, displayHeight/5);
-          input2.position(displayWidth/3+2.5, displayHeight/5);
+          input2.position(displayWidth/2 - displayWidth/8, displayHeight/5);
      }
 
 }
@@ -96,7 +96,7 @@ function wellAns() {
      gameState = 1;
 
      next = createButton("Next Question");
-     next.position(displayWidth/12*5, displayHeight/6*3);
+     next.position(displayWidth/3*2, displayHeight/6*3);
      next.size(displayWidth/6, displayHeight/15);
      next.style("font-size: 25px; font-family: Marker Felt;");
      next.mousePressed(refresh);
@@ -116,7 +116,7 @@ function draw() {
           cube.addImage(appleImg);
           appleImg.resize(displayWidth/25, displayHeight/20);
           x += 70;
-          if(x === displayWidth/12*5 + 210) {
+          if(x === displayWidth/12*5 + 350) {
                y += 60;
                x = displayWidth/12*5;
           }
@@ -127,7 +127,7 @@ function draw() {
      for(var i=0; i < value2; i++) {
           cube2 = createSprite(x, y, displayHeight/15, 5);
           x += 70;
-          if(x === displayWidth/12*5 + 210) {
+          if(x === displayWidth/12*5 + 350) {
                y += 60;
                x = displayWidth/12*5;
           }
