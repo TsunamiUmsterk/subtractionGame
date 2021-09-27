@@ -3,8 +3,8 @@ html, body {
 }
   
 canvas {
-  border: outset;
-  border-width: 5px;
+  border: outset 8px;
+  margin: 70px;
 }
 
 p {

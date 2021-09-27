@@ -11,14 +11,15 @@ var stuff = [];
 var x, y, m, n;
 var appleImg, bananaImg;
 var cube2;
+var cor, wro;
 
 function preload() {
-     appleImg = loadImage("apple2.png");
+     appleImg = loadImage("apple.jpeg");
      bananaImg = loadImage("banana2.png");
 }
 
 function setup() {
-     createCanvas(displayWidth-10, displayHeight/3*2);
+     createCanvas(600, 600);
 
      value1 = round(random(1, 18));
      value2 = round(random(1, value1));
@@ -34,116 +35,76 @@ function setup() {
      gameState = 0;
 
      input = createButton(Ans);
-     input.size(displayWidth/4, displayHeight/12);
-     input.style("font-size: 30px; font-family: Marker Felt; border-radius: 40px;");
+     input.size(100, 60);
+     input.style("font-size: 30px; font-family: Optima; border-radius: 40px;");
+     input.style("border: outset 8px;");
      input.mousePressed(wellAns);
 
      input1 = createButton(Ans+va);
-     input1.size(displayWidth/4, displayHeight/12);
-     input1.style("font-size: 30px; font-family: Marker Felt; border-radius: 40px;");
+     input1.size(100, 60);
+     input1.style("font-size: 30px; font-family: Optima; border-radius: 40px;");
+     input1.style("border: outset 8px;");
      input1.mousePressed(badAns);
 
      input2 = createButton(Ans+va1);
-     input2.size(displayWidth/4, displayHeight/12);
-     input2.style("font-size: 30px; font-family: Marker Felt; border-radius: 40px;");
+     input2.size(100, 60);
+     input2.style("font-size: 30px; font-family: Optima; border-radius: 40px;");
+     input2.style("border: outset 8px;");
      input2.mousePressed(badAns);
 
      if(va1 === 1) {
-          input.position(5, displayHeight/5);
-          input1.position(displayWidth/2 - displayWidth/8, displayHeight/5);
-          input2.position(displayWidth - (displayWidth/4+5), displayHeight/5);
+          input.position(125, 350);
+          input1.position(325, 350);
+          input2.position(525, 350);
      } else if(va1 === 2) {
-          input.position(displayWidth/2 - displayWidth/8, displayHeight/5);
-          input1.position(displayWidth - (displayWidth/4+5), displayHeight/5);
-          input2.position(5, displayHeight/5);
+          input.position(325, 350);
+          input1.position(525, 350);
+          input2.position(125, 350);
      } else if(va1 === 3) {
-          input.position(displayWidth - (displayWidth/4+5), displayHeight/5);
-          input1.position(5, displayHeight/5);
-          input2.position(displayWidth/2 - displayWidth/8, displayHeight/5);
+          input.position(525, 350);
+          input1.position(125, 350);
+          input2.position(325, 350);
      }
 
-}
-
-function refresh() {
-     location.reload();
-}
-
-function badAns() {
-     timer = 25;
-     if(frameCount%60 === 0) {
-          timer += -1;
-     }
-
-     gameState = 2;
-
-     next = createButton("Next Question");
-     next.position(displayWidth/12*5, displayHeight/6*3);
-     next.size(displayWidth/6, displayHeight/15);
-     next.style("font-size: 20px; font-family: Marker Felt;");
-     next.mousePressed(refresh);
-
-     input.hide();
-     input1.hide();
-     input2.hide();
-   }
-
-function wellAns() {
-     timer = 25;
-     if(frameCount%60 === 0) {
-          timer += -1;
-     }
-
-     gameState = 1;
-
-     next = createButton("Next Question");
-     next.position(displayWidth/3*2, displayHeight/6*3);
-     next.size(displayWidth/6, displayHeight/15);
-     next.style("font-size: 25px; font-family: Marker Felt;");
-     next.mousePressed(refresh);
-
-     input.hide();
-     input1.hide();
-     input2.hide();
 }
 
 function draw() {
-     background(250); 
+     background(255); 
 
-     x = displayWidth/12*5;
-     y = displayHeight/6*2;
+     x = 80;
+     y = 380;
      for(var i=0; i < value1; i++) {
           cube = createSprite(x, y, displayWidth/9, displayHeight/9);
           cube.addImage(appleImg);
           appleImg.resize(displayWidth/25, displayHeight/20);
           x += 70;
-          if(x === displayWidth/12*5 + 350) {
+          if(x === 80 + 350) {
                y += 60;
-               x = displayWidth/12*5;
+               x = 80;
           }
      }
 
-     x = displayWidth/12*5;
-     y = displayHeight/6*2;
+     x = 80;
+     y = 380;
      for(var i=0; i < value2; i++) {
           cube2 = createSprite(x, y, displayHeight/15, 5);
           x += 70;
-          if(x === displayWidth/12*5 + 350) {
+          if(x === 80 + 350) {
                y += 60;
-               x = displayWidth/12*5;
+               x = 80;
           }
      }
           
 
      textSize(50);
-     textFont('Marker Felt');
+     textFont('Courier');
      textAlign(CENTER, CENTER);
      fill('grey')
-     text(value1 + " - " + value2, displayWidth/2, displayHeight/12);
+     text(value1 + " - " + value2, 300, 150);
      
-     fill('grey');
      textAlign(CENTER, CENTER)
      textSize(30);
-     text("Question:", displayWidth/6, displayHeight/12);
+     text("Question:", 100, 70);
 
      
 
@@ -174,17 +135,17 @@ function draw() {
      }
 
      if(timer > 0 && gameState === 1) {
-          textSize(45);
-          textFont('Marker Felt');
+          textSize(28);
+          textFont('Cochin');
           textAlign(CENTER, CENTER);
           fill('green');
-          text("Well Done! You have gotten this question correct!", displayWidth/2, displayHeight/4); 
+          text("Well Done! You have gotten this question correct!", 300, 250); 
      } else if(timer > 0 && gameState === 2) {
-          textSize(40);
-          textFont('Marker Felt');
+          textSize(31);
+          textFont('Cochin');
           textAlign(CENTER, CENTER);
           fill('red');
-          text("Sorry, that was incorrect. The answer was " + Ans + ".", displayWidth/2, displayHeight/4);
+          text("Sorry, that was incorrect. The answer was " + Ans + ".", 300, 250);
      }
 
 
@@ -194,3 +155,46 @@ function draw() {
     drawSprites();
 }
 
+
+
+function refresh() {
+     location.reload();
+}
+
+function badAns() {
+     timer = 25;
+     if(frameCount%60 === 0) {
+          timer += -1;
+     }
+
+     gameState = 2;
+     next = createButton("Next Question");
+     next.position(460, 540);
+     next.size(200, 80);
+     next.style("font-size: 20px; font-family: Optima; border-radius: 50px;");
+     next.style("border: outset 8px; background-color: aqua;")
+     next.mousePressed(refresh);
+
+     input.hide();
+     input1.hide();
+     input2.hide();
+   }
+
+function wellAns() {
+     timer = 25;
+     if(frameCount%60 === 0) {
+          timer += -1;
+     }
+
+     gameState = 1;
+     next = createButton("Next Question");
+     next.position(460, 540);
+     next.size(200, 80);
+     next.style("font-size: 25px; font-family: Optima; border-radius: 50px;");
+     next.style("border: outset 8px; background-color: aqua;");
+     next.mousePressed(refresh);
+
+     input.hide();
+     input1.hide();
+     input2.hide();
+}
